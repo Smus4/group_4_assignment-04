@@ -1,4 +1,5 @@
 namespace Assignment3.Entities;
+#pragma warning disable
 
 public class Task
 {
