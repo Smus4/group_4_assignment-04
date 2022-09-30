@@ -1,6 +1,7 @@
 using Assignment3.Core;
 
 namespace Assignment3.Entities;
+#pragma warning disable
 
 public class TaskRepository : ITaskRepository
 {

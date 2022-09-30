@@ -1,5 +1,5 @@
 namespace Assignment3.Entities;
-
+#pragma warning disable
 public class User
 {
     public int Id {get; set;}
