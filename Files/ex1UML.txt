@@ -1,0 +1,44 @@
+@startuml
+abstract class Animal {
+ private boolean isCarnivore;
+ private string name;
+ private int speciesCount;
+ private void procreate();
+ private void eat();
+ public boolean getIsCarnivore();
+ public string getName();
+ public int setSpeciesCount();
+ public void setSpeciesCount();
+}
+
+abstract class Mammal extends Animal { 
+ 
+ @Override void procreate();
+ @Override void eat();
+}
+
+abstract class Reptile extends Animal { 
+ 
+ @Override void procreate();
+ @Override void eat();
+}
+
+class Crocodile extends Reptile {
+ private boolean isColdBlooded;
+ @Override void procreate();
+ @Override void eat();
+}
+
+class Whale extends Mammal {
+ private double whaleSongPitch;
+ @Override void procreate();
+ @Override void eat();
+}
+
+class Human extends Mammal {
+ private boolean hasOpposableThumbs;
+ @Override void procreate();
+ @Override void eat();
+}
+
+@enduml
