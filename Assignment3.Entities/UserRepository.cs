@@ -35,21 +35,58 @@ public class UserRepository : IUserRepository{
 
     public Response Delete(int userId, bool force = false)
     {
-        throw new NotImplementedException();
+        var entity = _context.Users.FirstOrDefault(u => u.Id == userId);
+
+        if (entity == null){
+            return Response.NotFound;
+        }
+        if(!force){
+            return Response.Conflict;
+        }
+
+        _context.Users.Remove(entity);
+        _context.SaveChanges();
+
+        return Response.Deleted;
     }
 
     public UserDTO Read(int userId)
     {
-        throw new NotImplementedException();
+        var users = from u in _context.Users
+                    where u.Id == userId
+                    select new UserDTO(u.Id, u.Name, u.Email);
+        
+        return users.FirstOrDefault();
     }
 
     public IReadOnlyCollection<UserDTO> ReadAll()
     {
-        throw new NotImplementedException();
+        var users = from u in _context.Users
+                    select new UserDTO(
+                        u.Id,
+                        u.Name,
+                        u.Email
+                    );
+
+        return users.ToArray();
     }
 
     public Response Update(UserUpdateDTO user)
     {
-        throw new NotImplementedException();
+        var entity = _context.Users.FirstOrDefault(u => u.Id == user.Id);
+
+        if (entity == null)
+        {
+            return Response.NotFound;
+        }
+
+            entity.Id = user.Id;
+            entity.Email = user.Email;
+            entity.Name = user.Name;
+
+
+            _context.SaveChanges();
+
+            return Response.Updated;
     }
 }
