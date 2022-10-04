@@ -1,0 +1,13 @@
+@startuml
+[*] --> New : <i>create()
+New --> [*] : <i>delete()
+New --> Resolved : <i>update()
+Resolved --> Resolved :<i>delete()
+New --> Closed : <i>update()
+Closed --> Closed :<i>delete()
+New --> Active : <i>update()
+New --> Removed : <i>update()
+Removed --> Removed :<i>delete()
+Active --> Removed : <i>delete()
+
+@enduml
